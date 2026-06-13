@@ -1,0 +1,66 @@
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+}
+
+.sidebar-header {
+  text-align: center;
+  padding: 25px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.portal-title {
+  text-align: center;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.nav-link {
+  color: #d1d5db !important;
+  padding: 14px 20px;
+  margin: 4px 10px;
+  border-radius: 10px;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background: #2563eb;
+  color: white !important;
+  transform: translateX(5px);
+}
+
+.active-menu {
+  background: #2563eb;
+  color: white !important;
+}
+
+.content-area {
+  overflow-x: hidden;
+}
+
+.stat-card {
+  transition: all .3s ease;
+  border-radius: 15px;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.table tbody tr {
+  transition: all .2s ease;
+}
+
+.table tbody tr:hover {
+  background: #eef6ff;
+}
+
+.btn {
+  border-radius: 8px;
+}

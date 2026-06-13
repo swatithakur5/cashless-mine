@@ -1,0 +1,54 @@
+.page-card {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.gov-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.gov-table th {
+  background: #0f4c81;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.gov-table td {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.gov-table tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.form-control {
+  height: 42px;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+}

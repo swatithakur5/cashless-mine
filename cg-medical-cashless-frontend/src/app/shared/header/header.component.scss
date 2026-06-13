@@ -1,0 +1,39 @@
+.header {
+  height: 70px;
+  background: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 24px;
+
+  border-bottom: 1px solid #d9e2ec;
+
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.portal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f4c81;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+select {
+  height: 38px;
+  padding: 0 10px;
+}
+
+.logout-btn {
+  border: none;
+  background: #dc3545;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 4px;
+}

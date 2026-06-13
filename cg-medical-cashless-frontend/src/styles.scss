@@ -1,0 +1,42 @@
+@import './styles/_common';
+:root {
+  --primary: #0f4c81;
+  --primary-light: #1e6bb8;
+
+  --success: #198754;
+  --warning: #ffc107;
+  --danger: #dc3545;
+
+  --bg: #f4f7fa;
+  --white: #ffffff;
+
+  --text: #2d3748;
+  --text-light: #6b7280;
+
+  --border: #d9e2ec;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}

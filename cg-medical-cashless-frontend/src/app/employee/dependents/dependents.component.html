@@ -1,0 +1,61 @@
+<div class="page-card">
+
+  <div class="page-header">
+
+      <h2>Dependents</h2>
+
+      <button class="btn-primary">
+
+          Add Dependent
+
+      </button>
+
+  </div>
+
+  <table class="gov-table">
+
+      <thead>
+
+          <tr>
+
+              <th>Name</th>
+
+              <th>Relation</th>
+
+              <th>DOB</th>
+
+              <th>Action</th>
+
+          </tr>
+
+      </thead>
+
+      <tbody>
+
+          @for(dep of dependents; track dep){
+
+          <tr>
+
+              <td>{{dep.name}}</td>
+
+              <td>{{dep.relation}}</td>
+
+              <td>{{dep.dob}}</td>
+
+              <td>
+
+                  <button>Edit</button>
+
+                  <button>Delete</button>
+
+              </td>
+
+          </tr>
+
+          }
+
+      </tbody>
+
+  </table>
+
+</div>

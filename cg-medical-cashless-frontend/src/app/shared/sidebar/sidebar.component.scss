@@ -1,0 +1,40 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #0f4c81;
+  color: white;
+}
+
+.logo {
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.user-info {
+  padding: 15px;
+  background: rgba(255,255,255,.08);
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.menu a {
+  color: white;
+  padding: 14px 20px;
+}
+
+.menu a:hover {
+  background: rgba(255,255,255,.12);
+}

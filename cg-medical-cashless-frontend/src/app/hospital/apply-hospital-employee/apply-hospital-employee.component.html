@@ -1,0 +1,740 @@
+<form>
+
+  <!-- ═══════════════════════════════════════════
+       HERO HEADER
+  ═══════════════════════════════════════════ -->
+  <div class="hero">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+
+    <div class="hero-inner">
+      <!-- <div class="hero-pill">
+        <span class="pill-dot"></span>
+        Medical Reimbursement
+      </div> -->
+      <h1 class="hero-title">
+        <em>Patient Treatment Information</em>
+      </h1>
+      <!-- <p class="hero-sub">Complete the four steps below to submit your application</p> -->
+
+      <!-- Step chips -->
+      <!-- <div class="hero-steps">
+        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateFirst()" (click)="togglePanelFirst()" type="button">
+          <mat-icon>badge</mat-icon><span>Employee</span>
+        </button>
+        <span class="hs-arrow">›</span>
+        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateSecond()" (click)="togglePanelSecond()" type="button">
+          <mat-icon>personal_injury</mat-icon><span>Patient</span>
+        </button>
+        <span class="hs-arrow">›</span>
+        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateThird()" (click)="togglePanelThird()" type="button">
+          <mat-icon>medical_services</mat-icon><span>Treatment</span>
+        </button>
+        <span class="hs-arrow">›</span>
+        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateFourth()" (click)="togglePanelFourth()" type="button">
+          <mat-icon>upload_file</mat-icon><span>Documents</span>
+        </button>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       FLOATING SECTIONS STACK
+  ═══════════════════════════════════════════ -->
+  <div class="stack">
+
+    <!-- ─────────────────────────────────────────
+         CARD 1 · EMPLOYEE DETAILS
+    ───────────────────────────────────────── -->
+    <div >
+      <mat-accordion class="bare-accordion">
+
+        <mat-expansion-panel  class="float-card float-card--1">
+          <mat-expansion-panel-header  class="fc-header">
+            <mat-panel-title class="fc-title">
+              <div class="fc-num">01</div>
+              <div class="fc-icon-wrap">
+                <mat-icon>badge</mat-icon>
+              </div>
+              <div class="fc-meta">
+                <span class="fc-label">Step one</span>
+                <span class="fc-name">Employee Details (Pre filled)</span>
+              </div>
+              <div class="fc-chevron">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="fc-body">
+            <!-- <div class="info-strip">
+              <mat-icon>lock</mat-icon>
+              Pre-filled from system — no edits required
+            </div> -->
+            <div class="field-grid">
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>person</mat-icon> Employee Name
+                </label>
+                <mat-form-field  class="fg-field">
+                  <!-- <mat-label>Enter Employee Name</mat-label> -->
+                  <input matInput readonly />
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>work</mat-icon> Designation
+                </label>
+                <mat-form-field  class="fg-field">
+                  <!-- <mat-label>Enter Designation Name</mat-label> -->
+                  <input matInput  readonly />
+                </mat-form-field>
+              </div>
+
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <!-- ─────────────────────────────────────────
+             CARD 2 · PATIENT DETAILS
+        ───────────────────────────────────────── -->
+        <mat-expansion-panel  class="float-card float-card--2">
+          <mat-expansion-panel-header  class="fc-header">
+            <mat-panel-title class="fc-title">
+              <div class="fc-num">02</div>
+              <div class="fc-icon-wrap">
+                <mat-icon>personal_injury</mat-icon>
+              </div>
+              <div class="fc-meta">
+                <span class="fc-label">Step two</span>
+                <span class="fc-name">Patient Details</span>
+              </div>
+              <div class="fc-chevron">
+                <mat-icon>expand_more</mat-icon>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="fc-body">
+            <div class="field-grid">
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>person_search</mat-icon> Patient Name <span class="req">*</span>
+                </label>
+                <ng-select class="custom-ng-select" 
+                  placeholder="Select Patient Name" 
+                  >
+                </ng-select>
+              </div>
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>people</mat-icon> Relationship <span class="req">*</span>
+                </label>
+                <ng-select  class="custom-ng-select" 
+                  >
+                </ng-select>
+              </div>
+
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
+
+    <!-- ─────────────────────────────────────────
+         CARD 3 · TREATMENT DETAILS
+    ───────────────────────────────────────── -->
+    <mat-accordion class="bare-accordion">
+      <mat-expansion-panel  class="float-card float-card--3">
+        <mat-expansion-panel-header  class="fc-header">
+          <mat-panel-title class="fc-title">
+            <div class="fc-num">03</div>
+            <div class="fc-icon-wrap">
+              <mat-icon>medical_services</mat-icon>
+            </div>
+            <div class="fc-meta">
+              <span class="fc-label">Step three</span>
+              <span class="fc-name">Treatment Details</span>
+            </div>
+            <div class="fc-chevron">
+              <mat-icon>expand_more</mat-icon>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="fc-body">
+
+          <!-- Input zone -->
+          <div class="input-zone">
+
+            <div class="iz-head">
+              <mat-icon>edit_note</mat-icon>
+              <span>scdsd</span>
+            </div>
+
+            <!-- Row A: Type selectors -->
+            <div class="iz-row">
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>category</mat-icon> Treatment Type
+                </label>
+                <ng-select class="custom-ng-select" >
+                </ng-select>
+              </div>
+
+            
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>bed</mat-icon> IPD Type
+                </label>
+                <ng-select appearance="outline" class="custom-ng-select" >
+                </ng-select>
+              </div>
+              
+
+        
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>search</mat-icon> Search CGHS / Procedure
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <!-- <mat-label>Search CGHS / Procedure</mat-label> -->
+                  <input matInput type="text"  />
+                  <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item fg-item--wide">
+                <label class="fg-label">
+                  <mat-icon>medical_information</mat-icon> Procedure
+                </label>
+                <ng-select appearance="outline" class="custom-ng-select" >
+                  <ng-template ng-option-tmp >
+                    asdxa
+                  </ng-template>
+                  <ng-template ng-label-tmp >
+                    zc
+                  </ng-template>
+                </ng-select>
+              </div>
+              
+
+            </div>
+
+            <!-- Row B: Hospital -->
+            <div class="iz-row iz-row--divider">
+
+              <!-- District -->
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>location_city</mat-icon> District
+                </label>
+                <ng-select appearance="outline" class="custom-ng-select" >
+                </ng-select>
+              </div>
+
+              <!-- Hospital -->
+              <div class="fg-item fg-item--wide">
+                <label class="fg-label">
+                  <mat-icon>local_hospital</mat-icon> Hospital
+                </label>
+                <ng-select appearance="outline" class="custom-ng-select" >
+                </ng-select>
+              </div>
+
+              <!-- Location of Hospital -->
+              <!-- <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>place</mat-icon> Receipt No.
+                </label>
+                  <input formControlName="receipt_no" placeholder="Enter Receipt No">
+              </div> -->
+
+              <!-- Hospital Type -->
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>business</mat-icon> Hospital Type
+                </label>
+                <ng-select appearance="outline" class="custom-ng-select" >
+                </ng-select>
+              </div>
+
+
+              <!-- Recognised Hospital -->
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>verified</mat-icon> Recognised Hospital
+                </label>
+                <ng-select appearance="outline" class="custom-ng-select" >
+                </ng-select>
+              </div>
+
+            </div>
+
+            <!-- Row B2: Medical Info -->
+            <div class="iz-row iz-row--divider">
+
+              <!-- Name of Disease -->
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>coronavirus</mat-icon> Disease Name
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <input matInput  placeholder="Enter disease" />
+                </mat-form-field>
+              </div>
+
+
+            </div>
+
+            <!-- Row C: Receipt & Amount -->
+            <!-- <div class="iz-row iz-row--divider">
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>receipt_long</mat-icon> Receipt No
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Receipt No</mat-label>
+                  <input matInput formControlName="receipt_no" />
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>today</mat-icon> Receipt Date
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Receipt Date</mat-label>
+                  <input
+                    matInput
+                    formControlName="receipt_date"
+                    [max]="today"
+                    [matDatepicker]="picker"
+                    readonly
+                    (focus)="picker.open()" />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item fg-item--sm">
+                <label class="fg-label">
+                  <mat-icon>tag</mat-icon> Quantity
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Quantity</mat-label>
+                  <input matInput type="number" formControlName="quantity" (input)="updateClaimAmount()" />
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>currency_rupee</mat-icon> Rate / Unit
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Rate per Unit</mat-label>
+                  <input matInput type="number" formControlName="rate_per_unit" (input)="updateClaimAmount()" />
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item fg-item--amount">
+                <label class="fg-label">
+                  <mat-icon>payments</mat-icon> Claim Amount
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Claim Amount</mat-label>
+                  <input matInput type="number" formControlName="claim_amount" readonly />
+                </mat-form-field>
+              </div>
+
+            </div> -->
+
+            <!-- Row D: Dates -->
+            <div class="iz-row iz-row--divider">
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>event</mat-icon> Treatment From
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <!-- <mat-label>Treatment From Date</mat-label> -->
+                   <input matInput  readonly />
+                  <mat-datepicker-toggle ></mat-datepicker-toggle>
+                  <mat-datepicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>event_available</mat-icon> Treatment To
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+
+                  <input matInput  />
+                  <mat-datepicker-toggle ></mat-datepicker-toggle>
+                  <mat-datepicker ></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item fg-item--sm">
+                <label class="fg-label">
+                  <mat-icon>date_range</mat-icon> Total Days
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+
+                  <input matInput type="number" readonly />
+                </mat-form-field>
+              </div>
+
+            </div>
+
+            <div class="iz-cta">
+              <button class="cta-btn cta-btn--add" type="button">
+                <mat-icon>add_circle_outline</mat-icon> Add Treatment
+              </button>
+              <button class="cta-btn cta-btn--update" 
+                type="button">
+                <mat-icon>check_circle_outline</mat-icon> Update Record
+              </button>
+            </div>
+
+          </div>
+
+          <div class="records-wrap" >
+            <div class="records-bar">
+              <div class="rb-left">
+                <mat-icon>table_chart</mat-icon>
+                <span>Treatment Records</span>
+                <span class="rb-badge">ed</span>
+              </div>
+              <div class="rb-right">
+                <mat-icon>account_balance_wallet</mat-icon>
+                Total ₹<strong>23</strong>
+              </div>
+            </div>
+
+            <div class="records-scroll ">
+              <table class="rec-table table table-bordered">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Treatment</th>
+                    <th>IPD</th>
+                    <th>Proccedure Type</th>
+                    <th>Proceedure Name</th>
+                    <th>District Name</th>
+                    <th>Hospital Name</th>
+                    <th>Receipt No.</th>
+                    <th>Receipt Date</th>
+                    <th>Qty</th>
+                    <th>Amount</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="rec-row">
+                    <td class="mono tc">1</td>
+                    <td><span class="tag-pill">101</span></td>
+                    <td>opd</td>
+                    <td>xdvfd</td>
+                    <td class="cell-clip">fcf</td>
+                    <td>dvfxdb</td>
+                    <td class="cell-clip">dgvxd</td>
+                    <td class="mono"></td>
+                    <td class="mono">
+                    
+                    </td>
+                    <td class="tc">fsf</td>
+                    <td class="mono amt">₹21111</td>
+                    <td class="mono">
+                      23/3/26
+                    </td>
+
+                    <td class="mono">
+                      24/5/26
+                    </td>
+                    <td class="action-cell">
+                      <button class="ic-btn ic-edit"  type="button">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button class="ic-btn ic-del"  type="button">
+                        <mat-icon>delete_outline</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <mat-accordion class="bare-accordion" multi="true">
+      <mat-expansion-panel  class="float-card float-card--4">
+        <mat-expansion-panel-header  class="fc-header">
+          <mat-panel-title class="fc-title">
+            <div class="fc-num">04</div>
+            <div class="fc-icon-wrap">
+              <mat-icon>upload_file</mat-icon>
+            </div>
+            <div class="fc-meta">
+              <span class="fc-label">Step four</span>
+              <span class="fc-name">Other Details & Documents</span>
+            </div>
+            <div class="fc-chevron">
+              <mat-icon>expand_more</mat-icon>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="fc-body" >
+
+          <!-- Toggle questions -->
+          <div class="toggle-questions">
+
+            <div class="tq-card">
+              <div class="tq-icon">
+                <mat-icon>verified_user</mat-icon>
+              </div>
+              <div class="tq-body">
+                <p class="tq-text">Is the hospital accredited?</p>
+                <mat-radio-group  class="tq-radios">
+                  <label class="tq-opt"
+                    >
+                    <mat-radio-button value="yes"></mat-radio-button>
+                    <mat-icon>check_circle</mat-icon>
+                    <span>Yes</span>
+                  </label>
+                  <label class="tq-opt"
+                    >
+                    <mat-radio-button value="no"></mat-radio-button>
+                    <mat-icon>cancel</mat-icon>
+                    <span>No</span>
+                  </label>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="tq-card">
+              <div class="tq-icon">
+                <mat-icon>account_balance</mat-icon>
+              </div>
+              <div class="tq-body">
+                <p class="tq-text">Is treatment available in Govt. hospital within state?</p>
+                <mat-radio-group  class="tq-radios">
+                  <label class="tq-opt"
+                    >
+                    <mat-radio-button value="yes"></mat-radio-button>
+                    <mat-icon>check_circle</mat-icon>
+                    <span>Yes</span>
+                  </label>
+                  <label class="tq-opt"
+                    >
+                    <mat-radio-button value="no"></mat-radio-button>
+                    <mat-icon>cancel</mat-icon>
+                    <span>No</span>
+                  </label>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="tq-card tq-card--text">
+              <div class="tq-icon">
+                <mat-icon>health_and_safety</mat-icon>
+              </div>
+              <div class="tq-body" style="flex:1">
+                <p class="tq-text">Referring Doctor Name</p>
+                <mat-form-field appearance="outline" class="fg-field" style="width:100%;margin-top:8px">
+                  <!-- <mat-label>Refer Doctor Name</mat-label> -->
+                  <input matInput  />
+                  <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ═══════════════════════════════════════════
+               DOCUMENT UPLOAD — TABLE LAYOUT
+          ═══════════════════════════════════════════ -->
+          <div class="doc-section">
+
+            <!-- Section header -->
+            <!-- <div class="doc-head">
+              <div class="doc-head-left">
+                <div class="doc-head-icon">
+                  <mat-icon>folder_open</mat-icon>
+                </div>
+                <div>
+                  <strong>Upload Documents</strong>
+                  <span>PDF only · max 500 KB each &nbsp;·&nbsp; <em>(*) Required</em></span>
+                </div>
+              </div>
+              <div class="doc-head-legend">
+                <span class="legend-req"><span class="legend-dot legend-dot--req"></span> Required</span>
+                <span class="legend-opt"><span class="legend-dot legend-dot--opt"></span> Optional</span>
+              </div>
+            </div> -->
+
+            <!-- Document table -->
+            <div class="doc-table-wrap">
+              <table class="doc-table">
+
+                <thead>
+                  <tr>
+                    <th class="dt-col-num">#</th>
+                    <th class="dt-col-name">Document Name</th>
+                    <th class="dt-col-amount">Total Bill Amount</th>
+                    <th class="dt-col-date">Document Date</th>
+                    <th class="dt-col-file">Uploaded File</th>
+                    <th class="dt-col-actions">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr >
+
+                    <!-- NUMBER -->
+                    <td class="dt-num">
+                      <span class="dt-num-inner">
+                        1
+                      </span>
+                    </td>
+
+                    <!-- DOCUMENT NAME -->
+                    <td class="dt-name">
+                      <div class="dt-name-wrap">
+
+                        <div class="dt-name-icon dt-icon--blue">
+                          <mat-icon>cdzsf</mat-icon>
+                        </div>
+
+                        <span class="dt-name-text">
+                          fsdf
+
+                          <span class="dt-asterisk">*</span>
+
+                        </span>
+
+                      </div>
+                    </td>
+
+                    <!-- AMOUNT -->
+                    <td class="dt-amount">
+
+                      <mat-form-field appearance="outline" class="dt-field">
+
+                        <span matPrefix>₹</span>
+
+                         <input matInput  readonly />
+
+                      </mat-form-field>
+
+                    </td>
+
+                    <!-- DATE -->
+                    <td class="dt-date">
+
+                      <mat-form-field appearance="outline" class="dt-field">
+
+                        <input matInput  />
+
+                        <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
+
+                        <mat-datepicker #picker></mat-datepicker>
+
+                      </mat-form-field>
+
+                    </td>
+
+                    <!-- FILE -->
+                    <td class="dt-file">
+
+                      <input type="file"  />
+
+                      <span class="dt-filename">
+
+                        <mat-icon>
+                      sdfvzdfv
+                        </mat-icon>
+
+                      fdvdfv
+
+                      </span>
+
+                    </td>
+
+                    <!-- ACTION BUTTONS -->
+                    <td class="dt-actions">
+
+                      <button class="dt-btn dt-btn--upload"  type="button"
+                        matTooltip="Upload PDF">
+                        <mat-icon>upload</mat-icon>
+                        <span>Upload</span>
+                      </button>
+
+                      <button class="dt-btn dt-btn--view"  type="button" matTooltip="View">
+                        <mat-icon>visibility</mat-icon>
+                      </button>
+
+                      <button class="dt-btn dt-btn--remove"  type="button" matTooltip="Remove">
+                        <mat-icon>delete_outline</mat-icon>
+                      </button>
+
+                    </td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+            </div>
+            <!-- /doc-table-wrap -->
+
+          </div>
+          <!-- /doc-section -->
+
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- ─────────────────────────────────────────
+         SUBMIT FOOTER CARD
+    ───────────────────────────────────────── -->
+    <div class="submit-card">
+      <div class="sc-checks">
+        <div class="sc-check">
+          <mat-icon>dfvdfvg</mat-icon>
+          <span>At least one treatment record added</span>
+        </div>
+        <div class="sc-check" >
+          <mat-icon>dgvfxdg</mat-icon>
+          <span>All required fields filled</span>
+        </div>
+      </div>
+
+      <button class="submit-btn"
+      type="button">
+        <span class="sb-shine"></span>
+        <mat-icon>send</mat-icon>
+        <span>Submit Application</span>
+      </button>
+    </div>
+
+  </div>
+  <!-- /stack -->
+
+</form>

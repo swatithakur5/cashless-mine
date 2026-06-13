@@ -1,0 +1,27 @@
+.otp-wrapper{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.otp-card{
+    width:400px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 4px 20px rgba(0,0,0,.1);
+}
+
+input{
+    width:100%;
+    height:45px;
+    padding:10px;
+    margin-top:15px;
+}
+
+button{
+    width:100%;
+    height:45px;
+    margin-top:15px;
+}

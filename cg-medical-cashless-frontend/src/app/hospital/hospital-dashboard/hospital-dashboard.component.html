@@ -1,0 +1,417 @@
+<div class="d-flex bg-light">
+
+  <!-- Sidebar -->
+  <div class="sidebar text-white shadow">
+
+    <div class="sidebar-header">
+      <i class="bi bi-hospital fs-3"></i>
+      <h4 class="mt-2 mb-0">CG CASHLESS</h4>
+    </div>
+
+    <div class="portal-title">
+      Hospital Portal
+    </div>
+
+    <ul class="nav flex-column mt-3">
+
+      <li class="nav-item">
+        <a class="nav-link active-menu">
+          <i class="bi bi-grid-fill me-2"></i>
+          Dashboard
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="bi bi-file-earmark-medical me-2"></i>
+          Authorization Requests
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="bi bi-clock-history me-2"></i>
+          Pending Cases
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="bi bi-check-circle me-2"></i>
+          Approved Cases
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="bi bi-bar-chart-line me-2"></i>
+          Reports
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-area flex-grow-1">
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm px-4">
+
+      <div>
+        <h5 class="fw-bold text-primary mb-0">
+          Chhattisgarh Medical Cashless Portal
+        </h5>
+
+        <small class="text-muted">
+          Hospital Authorization Management
+        </small>
+      </div>
+
+      <div class="ms-auto d-flex align-items-center gap-3">
+
+        <div class="text-end">
+          <div class="fw-semibold">
+            Apollo Hospital
+          </div>
+
+          <small class="text-muted">
+            Hospital User
+          </small>
+        </div>
+
+        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center"
+          style="width:42px;height:42px">
+
+          <i class="bi bi-hospital"></i>
+
+        </div>
+
+        <button class="btn btn-danger" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          Logout
+        </button>
+
+      </div>
+
+    </nav>
+
+    <!-- Body -->
+    <div class="container-fluid p-4">
+
+      <!-- Welcome -->
+      <div class="card border-0 shadow-sm mb-4">
+
+        <div class="card-body">
+
+          <h2 class="fw-bold">
+            Hospital Dashboard
+          </h2>
+
+          <p class="text-muted mb-0">
+            Welcome to CG Medical Cashless Portal
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Statistics -->
+      <!-- <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+
+          <div class="card stat-card border-0 shadow-sm">
+
+            <div class="card-body">
+
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+                  <h2 class="text-primary fw-bold">
+                    125
+                  </h2>
+
+                  <p class="text-muted mb-0">
+                    Total Requests
+                  </p>
+                </div>
+
+                <i class="bi bi-file-earmark-text-fill text-primary fs-1"></i>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+          <div class="card stat-card border-0 shadow-sm">
+
+            <div class="card-body">
+
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+                  <h2 class="text-success fw-bold">
+                    92
+                  </h2>
+
+                  <p class="text-muted mb-0">
+                    Approved
+                  </p>
+                </div>
+
+                <i class="bi bi-check-circle-fill text-success fs-1"></i>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+          <div class="card stat-card border-0 shadow-sm">
+
+            <div class="card-body">
+
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+                  <h2 class="text-warning fw-bold">
+                    24
+                  </h2>
+
+                  <p class="text-muted mb-0">
+                    Pending
+                  </p>
+                </div>
+
+                <i class="bi bi-clock-fill text-warning fs-1"></i>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+          <div class="card stat-card border-0 shadow-sm">
+
+            <div class="card-body">
+
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+                  <h2 class="text-danger fw-bold">
+                    09
+                  </h2>
+
+                  <p class="text-muted mb-0">
+                    Rejected
+                  </p>
+                </div>
+
+                <i class="bi bi-x-circle-fill text-danger fs-1"></i>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div> -->
+
+      <!-- Table Section -->
+
+      <div class="card border-0 shadow-sm">
+
+        <div class="card-header bg-secondary text-white">
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <h5 class="mb-0">
+              Hospital Authorization Requests
+            </h5>
+
+            <button class="btn btn-light btn-sm">
+              <i class="bi bi-plus-circle"></i>
+              New Request
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="row mb-3">
+
+            <div class="col-md-4">
+
+              <input type="text" class="form-control" placeholder="Search Employee / Hospital">
+
+            </div>
+
+            <div class="col-md-3">
+
+              <select class="form-select">
+
+                <option>All Status</option>
+                <option>Approved</option>
+                <option>Pending</option>
+                <option>Rejected</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+              <thead class="table-dark">
+
+                <tr>
+
+                  <th>S.No</th>
+                  <th>Emp ID</th>
+                  <th>Hospital Name</th>
+                  <th>Relation</th>
+                  <th>From Date</th>
+                  <th>To Date</th>
+                  <th>Amount</th>
+                  <th>status</th>
+                  <th>Action</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                <tr *ngFor="let row of requests">
+
+                  <td>{{ row.sno }}</td>
+
+                  <td>{{ row.empId }}</td>
+
+                  <td>{{ row.hospitalName }}</td>
+
+                  <td>
+                    <span class="badge bg-info">
+                      {{ row.relation }}
+                    </span>
+                  </td>
+
+                  <td>{{ row.fromDate }}</td>
+
+                  <td>{{ row.toDate }}</td>
+
+                  <td class="fw-bold text-success">
+                    ₹{{ row.amount | number }}
+                  </td>
+
+                  <!-- Status -->
+                  <td>
+
+                    <span *ngIf="row.status === 'Approved'" class="badge bg-success">
+
+                      Approved
+
+                    </span>
+
+                    <span *ngIf="row.status === 'Rejected'" class="badge bg-danger">
+
+                      Rejected
+
+                    </span>
+
+                  </td>
+
+                  <!-- Action -->
+                  <td>
+
+                    <button class="btn btn-primary btn-sm" [disabled]="row.status === 'Rejected'"
+                      (click)="openOtpModal(row)">
+
+                      View
+
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+            <div *ngIf="showOtpModal"
+              class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+              style="background:rgba(0,0,0,.5); z-index:9999;">
+
+              <div class="card shadow-lg" style="width:400px;">
+
+                <div class="card-header bg-success text-white">
+
+                  OTP Verification
+
+                </div>
+
+                <div class="card-body">
+
+                  <label class="form-label">
+
+                    Enter OTP
+
+                  </label>
+
+                  <input type="text" class="form-control" [(ngModel)]="otp">
+
+                </div>
+
+                <div class="card-footer text-end">
+
+                  <button class="btn btn-secondary me-2" (click)="closeModal()">
+
+                    Cancel
+
+                  </button>
+
+                  <button class="btn btn-success" (click)="verifyOtp()">
+
+                    Verify & Approve
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
