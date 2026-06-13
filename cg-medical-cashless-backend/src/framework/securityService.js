@@ -11,11 +11,14 @@ const service_files = {};
  * Returns the merged api details (api_creation, query_id, is_control_access, ...).
  */
 async function isApiPermissioned(req) {
-  const path = req._parsedUrl.pathname.replace(/\/$/, '');
+  // Use originalUrl so the router mount path (e.g. "/api") is preserved.
+  // req._parsedUrl.pathname is mount-relative and drops the "/api" prefix.
+  const path = req.originalUrl.split('?')[0].replace(/\/$/, '');
   const parts = path.split('/');
   const prefix = parts[1]; // e.g. "api"
   const rest = '/' + parts.slice(2).join('/'); // e.g. "/list/get/getHospitalList"
 
+  console.log('[API lookup] path=%s prefix=%s rest=%s', path, prefix, rest);
   const rows = await dbService.executeQuery(
     adminPool,
     `SELECT ma.api_id, ma.api_creation, ma.api_name, maq.query_id,
@@ -25,6 +28,7 @@ async function isApiPermissioned(req) {
       WHERE ma.api_path = ? AND ma.prefix = ?`,
     [rest, prefix]
   );
+  console.log('[API lookup] rows found:', rows.length);
 
   if (!rows || !rows.length) {
     throw { code: 'sc009', message: `${path} not found in mas_api` };

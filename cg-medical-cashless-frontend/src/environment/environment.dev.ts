@@ -30,9 +30,9 @@ export const reportConfig = {
 };
 
 export const moduleMapping: any = {
-  adminModule: `${host}:3002/`,
+  adminModule: `${host}:3000`,
 };
 
 export const apiPort: any = {
-  adminApi: `${host}:4002/detAdminApi`,
+  adminApi: `${host}:3000/detAdminApi`,
 };

@@ -1,4 +1,4 @@
-<form>
+<form *ngIf="ApplyMedicalReimbursementMainFormGroup" [formGroup]="ApplyMedicalReimbursementMainFormGroup">
 
   <!-- ═══════════════════════════════════════════
        HERO HEADER
@@ -9,33 +9,9 @@
     <div class="hero-orb hero-orb--3"></div>
 
     <div class="hero-inner">
-      <!-- <div class="hero-pill">
-        <span class="pill-dot"></span>
-        Medical Reimbursement
-      </div> -->
       <h1 class="hero-title">
         <em>Patient Treatment Information</em>
       </h1>
-      <!-- <p class="hero-sub">Complete the four steps below to submit your application</p> -->
-
-      <!-- Step chips -->
-      <!-- <div class="hero-steps">
-        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateFirst()" (click)="togglePanelFirst()" type="button">
-          <mat-icon>badge</mat-icon><span>Employee</span>
-        </button>
-        <span class="hs-arrow">›</span>
-        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateSecond()" (click)="togglePanelSecond()" type="button">
-          <mat-icon>personal_injury</mat-icon><span>Patient</span>
-        </button>
-        <span class="hs-arrow">›</span>
-        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateThird()" (click)="togglePanelThird()" type="button">
-          <mat-icon>medical_services</mat-icon><span>Treatment</span>
-        </button>
-        <span class="hs-arrow">›</span>
-        <button class="hs-chip" [class.hs-chip--active]="panelOpenStateFourth()" (click)="togglePanelFourth()" type="button">
-          <mat-icon>upload_file</mat-icon><span>Documents</span>
-        </button>
-      </div> -->
     </div>
   </div>
 
@@ -47,11 +23,11 @@
     <!-- ─────────────────────────────────────────
          CARD 1 · EMPLOYEE DETAILS
     ───────────────────────────────────────── -->
-    <div >
-      <mat-accordion class="bare-accordion">
+    <div formGroupName="basicDetails">
+      <mat-accordion class="bare-accordion" multi="true">
 
-        <mat-expansion-panel  class="float-card float-card--1">
-          <mat-expansion-panel-header  class="fc-header">
+        <mat-expansion-panel [expanded]="panelOpenStateFirst()" class="float-card float-card--1">
+          <mat-expansion-panel-header (click)="togglePanelFirst()" class="fc-header">
             <mat-panel-title class="fc-title">
               <div class="fc-num">01</div>
               <div class="fc-icon-wrap">
@@ -68,19 +44,14 @@
           </mat-expansion-panel-header>
 
           <div class="fc-body">
-            <!-- <div class="info-strip">
-              <mat-icon>lock</mat-icon>
-              Pre-filled from system — no edits required
-            </div> -->
             <div class="field-grid">
 
               <div class="fg-item">
                 <label class="fg-label">
                   <mat-icon>person</mat-icon> Employee Name
                 </label>
-                <mat-form-field  class="fg-field">
-                  <!-- <mat-label>Enter Employee Name</mat-label> -->
-                  <input matInput readonly />
+                <mat-form-field appearance="outline" class="fg-field">
+                  <input matInput formControlName="emp_name" readonly />
                 </mat-form-field>
               </div>
 
@@ -88,9 +59,8 @@
                 <label class="fg-label">
                   <mat-icon>work</mat-icon> Designation
                 </label>
-                <mat-form-field  class="fg-field">
-                  <!-- <mat-label>Enter Designation Name</mat-label> -->
-                  <input matInput  readonly />
+                <mat-form-field appearance="outline" class="fg-field">
+                  <input matInput formControlName="designation_name" readonly />
                 </mat-form-field>
               </div>
 
@@ -101,8 +71,8 @@
         <!-- ─────────────────────────────────────────
              CARD 2 · PATIENT DETAILS
         ───────────────────────────────────────── -->
-        <mat-expansion-panel  class="float-card float-card--2">
-          <mat-expansion-panel-header  class="fc-header">
+        <mat-expansion-panel [expanded]="panelOpenStateSecond()" class="float-card float-card--2">
+          <mat-expansion-panel-header (click)="togglePanelSecond()" class="fc-header">
             <mat-panel-title class="fc-title">
               <div class="fc-num">02</div>
               <div class="fc-icon-wrap">
@@ -125,9 +95,9 @@
                 <label class="fg-label">
                   <mat-icon>person_search</mat-icon> Patient Name <span class="req">*</span>
                 </label>
-                <ng-select class="custom-ng-select" 
-                  placeholder="Select Patient Name" 
-                  >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="patientDropdownList" bindLabel="name"
+                  placeholder="Select Patient Name" formControlName="patient_name"
+                  (change)="onChangePatientName($event)" appendTo="body">
                 </ng-select>
               </div>
 
@@ -135,8 +105,9 @@
                 <label class="fg-label">
                   <mat-icon>people</mat-icon> Relationship <span class="req">*</span>
                 </label>
-                <ng-select  class="custom-ng-select" 
-                  >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="relationList" bindLabel="relation"
+                  bindValue="relation" placeholder="Select Relationship" formControlName="relation_code" readOnly="true"
+                  appendTo="body">
                 </ng-select>
               </div>
 
@@ -150,9 +121,9 @@
     <!-- ─────────────────────────────────────────
          CARD 3 · TREATMENT DETAILS
     ───────────────────────────────────────── -->
-    <mat-accordion class="bare-accordion">
-      <mat-expansion-panel  class="float-card float-card--3">
-        <mat-expansion-panel-header  class="fc-header">
+    <mat-accordion class="bare-accordion" multi="true">
+      <mat-expansion-panel [expanded]="panelOpenStateThird()" class="float-card float-card--3">
+        <mat-expansion-panel-header (click)="togglePanelThird()" class="fc-header">
           <mat-panel-title class="fc-title">
             <div class="fc-num">03</div>
             <div class="fc-icon-wrap">
@@ -171,11 +142,11 @@
         <div class="fc-body">
 
           <!-- Input zone -->
-          <div class="input-zone">
+          <div class="input-zone" [formGroup]="treatmentForm">
 
             <div class="iz-head">
               <mat-icon>edit_note</mat-icon>
-              <span>scdsd</span>
+              <span>{{ editIndex === null ? 'Add New Treatment' : 'Update Treatment Record' }}</span>
             </div>
 
             <!-- Row A: Type selectors -->
@@ -185,28 +156,31 @@
                 <label class="fg-label">
                   <mat-icon>category</mat-icon> Treatment Type
                 </label>
-                <ng-select class="custom-ng-select" >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="treatmentTypeList"
+                  bindLabel="treatment_type_short_name_en" bindValue="treatment_type_code" placeholder="Select Type"
+                  formControlName="treatment_type_code" (change)="treatmentTypeChange($event)" appendTo="body">
                 </ng-select>
               </div>
 
-            
+              @if (isIpdType) {
               <div class="fg-item">
                 <label class="fg-label">
                   <mat-icon>bed</mat-icon> IPD Type
                 </label>
-                <ng-select appearance="outline" class="custom-ng-select" >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="idpTypeList" bindLabel="ipd_name_en"
+                  bindValue="ipd_type_code" placeholder="Select IPD Type" formControlName="ipd_type_code"
+                  (change)="ipdTypeChange($event)" appendTo="body">
                 </ng-select>
               </div>
-              
+              }
 
-        
+              @if (isProcedureType) {
               <div class="fg-item">
                 <label class="fg-label">
                   <mat-icon>search</mat-icon> Search CGHS / Procedure
                 </label>
                 <mat-form-field appearance="outline" class="fg-field">
-                  <!-- <mat-label>Search CGHS / Procedure</mat-label> -->
-                  <input matInput type="text"  />
+                  <input matInput type="text" formControlName="search_data" (input)="checkInputType()" />
                   <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
               </div>
@@ -215,16 +189,18 @@
                 <label class="fg-label">
                   <mat-icon>medical_information</mat-icon> Procedure
                 </label>
-                <ng-select appearance="outline" class="custom-ng-select" >
-                  <ng-template ng-option-tmp >
-                    asdxa
+                <ng-select appearance="outline" class="custom-ng-select" [items]="procedureDetailsList"
+                  bindValue="procedure_code" placeholder="Select Procedure" formControlName="procedure_code"
+                  [searchFn]="procedureSearch" appendTo="body">
+                  <ng-template ng-option-tmp let-item="item">
+                    {{ item.procedure_name_en }} ({{ item.procedure_code }})
                   </ng-template>
-                  <ng-template ng-label-tmp >
-                    zc
+                  <ng-template ng-label-tmp let-item="item">
+                    {{ item.procedure_name_en }} ({{ item.procedure_code }})
                   </ng-template>
                 </ng-select>
               </div>
-              
+              }
 
             </div>
 
@@ -236,7 +212,9 @@
                 <label class="fg-label">
                   <mat-icon>location_city</mat-icon> District
                 </label>
-                <ng-select appearance="outline" class="custom-ng-select" >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="districtList"
+                  bindLabel="district_name_en" bindValue="district_code" placeholder="Select District"
+                  formControlName="district_code" (change)="districtChange($event)" appendTo="body">
                 </ng-select>
               </div>
 
@@ -245,24 +223,19 @@
                 <label class="fg-label">
                   <mat-icon>local_hospital</mat-icon> Hospital
                 </label>
-                <ng-select appearance="outline" class="custom-ng-select" >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="hospitalList"
+                  bindLabel="hospital_name_en" bindValue="hospital_code" placeholder="Select Hospital"
+                  formControlName="hospital_code" appendTo="body">
                 </ng-select>
               </div>
-
-              <!-- Location of Hospital -->
-              <!-- <div class="fg-item">
-                <label class="fg-label">
-                  <mat-icon>place</mat-icon> Receipt No.
-                </label>
-                  <input formControlName="receipt_no" placeholder="Enter Receipt No">
-              </div> -->
 
               <!-- Hospital Type -->
               <div class="fg-item">
                 <label class="fg-label">
                   <mat-icon>business</mat-icon> Hospital Type
                 </label>
-                <ng-select appearance="outline" class="custom-ng-select" >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="hospitalTypeList" bindLabel="label"
+                  bindValue="value" placeholder="Select Type" formControlName="hospital_type" appendTo="body">
                 </ng-select>
               </div>
 
@@ -272,7 +245,9 @@
                 <label class="fg-label">
                   <mat-icon>verified</mat-icon> Recognised Hospital
                 </label>
-                <ng-select appearance="outline" class="custom-ng-select" >
+                <ng-select appearance="outline" class="custom-ng-select" [items]="recognisedHospitalList"
+                  bindLabel="label" bindValue="value" placeholder="Select" formControlName="is_recognised"
+                  appendTo="body">
                 </ng-select>
               </div>
 
@@ -287,75 +262,12 @@
                   <mat-icon>coronavirus</mat-icon> Disease Name
                 </label>
                 <mat-form-field appearance="outline" class="fg-field">
-                  <input matInput  placeholder="Enter disease" />
+                  <input matInput formControlName="disease_name" placeholder="Enter disease" />
                 </mat-form-field>
               </div>
 
 
             </div>
-
-            <!-- Row C: Receipt & Amount -->
-            <!-- <div class="iz-row iz-row--divider">
-
-              <div class="fg-item">
-                <label class="fg-label">
-                  <mat-icon>receipt_long</mat-icon> Receipt No
-                </label>
-                <mat-form-field appearance="outline" class="fg-field">
-                  <mat-label>Receipt No</mat-label>
-                  <input matInput formControlName="receipt_no" />
-                </mat-form-field>
-              </div>
-
-              <div class="fg-item">
-                <label class="fg-label">
-                  <mat-icon>today</mat-icon> Receipt Date
-                </label>
-                <mat-form-field appearance="outline" class="fg-field">
-                  <mat-label>Receipt Date</mat-label>
-                  <input
-                    matInput
-                    formControlName="receipt_date"
-                    [max]="today"
-                    [matDatepicker]="picker"
-                    readonly
-                    (focus)="picker.open()" />
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-              </div>
-
-              <div class="fg-item fg-item--sm">
-                <label class="fg-label">
-                  <mat-icon>tag</mat-icon> Quantity
-                </label>
-                <mat-form-field appearance="outline" class="fg-field">
-                  <mat-label>Quantity</mat-label>
-                  <input matInput type="number" formControlName="quantity" (input)="updateClaimAmount()" />
-                </mat-form-field>
-              </div>
-
-              <div class="fg-item">
-                <label class="fg-label">
-                  <mat-icon>currency_rupee</mat-icon> Rate / Unit
-                </label>
-                <mat-form-field appearance="outline" class="fg-field">
-                  <mat-label>Rate per Unit</mat-label>
-                  <input matInput type="number" formControlName="rate_per_unit" (input)="updateClaimAmount()" />
-                </mat-form-field>
-              </div>
-
-              <div class="fg-item fg-item--amount">
-                <label class="fg-label">
-                  <mat-icon>payments</mat-icon> Claim Amount
-                </label>
-                <mat-form-field appearance="outline" class="fg-field">
-                  <mat-label>Claim Amount</mat-label>
-                  <input matInput type="number" formControlName="claim_amount" readonly />
-                </mat-form-field>
-              </div>
-
-            </div> -->
 
             <!-- Row D: Dates -->
             <div class="iz-row iz-row--divider">
@@ -365,10 +277,10 @@
                   <mat-icon>event</mat-icon> Treatment From
                 </label>
                 <mat-form-field appearance="outline" class="fg-field">
-                  <!-- <mat-label>Treatment From Date</mat-label> -->
-                   <input matInput  readonly />
-                  <mat-datepicker-toggle ></mat-datepicker-toggle>
-                  <mat-datepicker></mat-datepicker>
+                  <input matInput formControlName="treatment_from_date" [matDatepicker]="fromPicker" [max]="today"
+                    (focus)="fromPicker.open()" readonly (dateChange)="fromPicker.close(); onDateChange()" />
+                  <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #fromPicker></mat-datepicker>
                 </mat-form-field>
               </div>
 
@@ -378,9 +290,10 @@
                 </label>
                 <mat-form-field appearance="outline" class="fg-field">
 
-                  <input matInput  />
-                  <mat-datepicker-toggle ></mat-datepicker-toggle>
-                  <mat-datepicker ></mat-datepicker>
+                  <input matInput formControlName="treatment_to_date" [matDatepicker]="toPicker" [max]="today"
+                    (focus)="toPicker.open()" readonly (dateChange)="toPicker.close(); onDateChange()" />
+                  <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #toPicker></mat-datepicker>
                 </mat-form-field>
               </div>
 
@@ -390,17 +303,17 @@
                 </label>
                 <mat-form-field appearance="outline" class="fg-field">
 
-                  <input matInput type="number" readonly />
+                  <input matInput type="number" formControlName="total_days" readonly />
                 </mat-form-field>
               </div>
 
             </div>
 
             <div class="iz-cta">
-              <button class="cta-btn cta-btn--add" type="button">
+              <button class="cta-btn cta-btn--add" *ngIf="editIndex === null" (click)="addTreatment()" type="button">
                 <mat-icon>add_circle_outline</mat-icon> Add Treatment
               </button>
-              <button class="cta-btn cta-btn--update" 
+              <button class="cta-btn cta-btn--update" *ngIf="editIndex !== null" (click)="updateTreatment()"
                 type="button">
                 <mat-icon>check_circle_outline</mat-icon> Update Record
               </button>
@@ -408,20 +321,20 @@
 
           </div>
 
-          <div class="records-wrap" >
+          <div class="records-wrap" *ngIf="treatmentDetails.length > 0">
             <div class="records-bar">
               <div class="rb-left">
                 <mat-icon>table_chart</mat-icon>
                 <span>Treatment Records</span>
-                <span class="rb-badge">ed</span>
+                <span class="rb-badge">{{ treatmentDetails.length }}</span>
               </div>
               <div class="rb-right">
                 <mat-icon>account_balance_wallet</mat-icon>
-                Total ₹<strong>23</strong>
+                Total &nbsp;₹<strong>{{ totalAmount }}</strong>
               </div>
             </div>
 
-            <div class="records-scroll ">
+            <div class="records-scroll">
               <table class="rec-table table table-bordered">
                 <thead>
                   <tr>
@@ -442,32 +355,38 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="rec-row">
-                    <td class="mono tc">1</td>
-                    <td><span class="tag-pill">101</span></td>
-                    <td>opd</td>
-                    <td>xdvfd</td>
-                    <td class="cell-clip">fcf</td>
-                    <td>dvfxdb</td>
-                    <td class="cell-clip">dgvxd</td>
-                    <td class="mono"></td>
+                  <tr *ngFor="let row of treatmentDetails.controls; let i = index" class="rec-row">
+                    <td class="mono tc">{{ i + 1 }}</td>
+                    <td><span class="tag-pill">{{ getTreatmentName(row.value.treatment_type_code) }}</span></td>
+                    <td>{{ getIpdName(row.value.ipd_type_code) || '—' }}</td>
+                    <td>{{ getProccedureType(row.value.procedure_type_code) || '—' }}</td>
+                    <td class="cell-clip">{{ getProccedureDetails(row.value.procedure_code) || '—' }}</td>
+                    <td>{{ getDistrictDetails(row.value.district_code) }}</td>
+                    <td class="cell-clip">{{ getHospitalDetails(row.value.hospital_code) }}</td>
+                    <td class="mono">{{ row.value.receipt_no || '—' }}</td>
                     <td class="mono">
-                    
+                      {{ row.value.receipt_date
+                      ? (row.value.receipt_date | date:'dd/MM/yyyy')
+                      : '—' }}
                     </td>
-                    <td class="tc">fsf</td>
-                    <td class="mono amt">₹21111</td>
+                    <td class="tc">{{ row.value.quantity || '—'}}</td>
+                    <td class="mono amt">₹{{ row.value.claim_amount }}</td>
                     <td class="mono">
-                      23/3/26
+                      {{ row.value.treatment_from_date
+                      ? (row.value.treatment_from_date | date:'dd/MM/yyyy')
+                      : '—' }}
                     </td>
 
                     <td class="mono">
-                      24/5/26
+                      {{ row.value.treatment_to_date
+                      ? (row.value.treatment_to_date | date:'dd/MM/yyyy')
+                      : '—' }}
                     </td>
                     <td class="action-cell">
-                      <button class="ic-btn ic-edit"  type="button">
+                      <button class="ic-btn ic-edit" (click)="editTreatment(i)" type="button">
                         <mat-icon>edit</mat-icon>
                       </button>
-                      <button class="ic-btn ic-del"  type="button">
+                      <button class="ic-btn ic-del" (click)="removeTreatment(i)" type="button">
                         <mat-icon>delete_outline</mat-icon>
                       </button>
                     </td>
@@ -482,8 +401,8 @@
 
 
     <mat-accordion class="bare-accordion" multi="true">
-      <mat-expansion-panel  class="float-card float-card--4">
-        <mat-expansion-panel-header  class="fc-header">
+      <mat-expansion-panel [expanded]="panelOpenStateFourth()" class="float-card float-card--4">
+        <mat-expansion-panel-header (click)="togglePanelFourth()" class="fc-header">
           <mat-panel-title class="fc-title">
             <div class="fc-num">04</div>
             <div class="fc-icon-wrap">
@@ -499,7 +418,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <div class="fc-body" >
+        <div class="fc-body" formGroupName="otherDetails">
 
           <!-- Toggle questions -->
           <div class="toggle-questions">
@@ -510,15 +429,15 @@
               </div>
               <div class="tq-body">
                 <p class="tq-text">Is the hospital accredited?</p>
-                <mat-radio-group  class="tq-radios">
+                <mat-radio-group formControlName="hospital_accredited" class="tq-radios">
                   <label class="tq-opt"
-                    >
+                    [class.tq-opt--yes]="ApplyMedicalReimbursementMainFormGroup.get('otherDetails.hospital_accredited')?.value === 'yes'">
                     <mat-radio-button value="yes"></mat-radio-button>
                     <mat-icon>check_circle</mat-icon>
                     <span>Yes</span>
                   </label>
                   <label class="tq-opt"
-                    >
+                    [class.tq-opt--no]="ApplyMedicalReimbursementMainFormGroup.get('otherDetails.hospital_accredited')?.value === 'no'">
                     <mat-radio-button value="no"></mat-radio-button>
                     <mat-icon>cancel</mat-icon>
                     <span>No</span>
@@ -533,15 +452,15 @@
               </div>
               <div class="tq-body">
                 <p class="tq-text">Is treatment available in Govt. hospital within state?</p>
-                <mat-radio-group  class="tq-radios">
+                <mat-radio-group formControlName="is_treatment_available_in_state" class="tq-radios">
                   <label class="tq-opt"
-                    >
+                    [class.tq-opt--yes]="ApplyMedicalReimbursementMainFormGroup.get('otherDetails.is_treatment_available_in_state')?.value === 'yes'">
                     <mat-radio-button value="yes"></mat-radio-button>
                     <mat-icon>check_circle</mat-icon>
                     <span>Yes</span>
                   </label>
                   <label class="tq-opt"
-                    >
+                    [class.tq-opt--no]="ApplyMedicalReimbursementMainFormGroup.get('otherDetails.is_treatment_available_in_state')?.value === 'no'">
                     <mat-radio-button value="no"></mat-radio-button>
                     <mat-icon>cancel</mat-icon>
                     <span>No</span>
@@ -557,8 +476,7 @@
               <div class="tq-body" style="flex:1">
                 <p class="tq-text">Referring Doctor Name</p>
                 <mat-form-field appearance="outline" class="fg-field" style="width:100%;margin-top:8px">
-                  <!-- <mat-label>Refer Doctor Name</mat-label> -->
-                  <input matInput  />
+                  <input matInput formControlName="refer_doctor_name" />
                   <mat-icon matSuffix>person</mat-icon>
                 </mat-form-field>
               </div>
@@ -570,23 +488,6 @@
                DOCUMENT UPLOAD — TABLE LAYOUT
           ═══════════════════════════════════════════ -->
           <div class="doc-section">
-
-            <!-- Section header -->
-            <!-- <div class="doc-head">
-              <div class="doc-head-left">
-                <div class="doc-head-icon">
-                  <mat-icon>folder_open</mat-icon>
-                </div>
-                <div>
-                  <strong>Upload Documents</strong>
-                  <span>PDF only · max 500 KB each &nbsp;·&nbsp; <em>(*) Required</em></span>
-                </div>
-              </div>
-              <div class="doc-head-legend">
-                <span class="legend-req"><span class="legend-dot legend-dot--req"></span> Required</span>
-                <span class="legend-opt"><span class="legend-dot legend-dot--opt"></span> Optional</span>
-              </div>
-            </div> -->
 
             <!-- Document table -->
             <div class="doc-table-wrap">
@@ -605,12 +506,13 @@
 
                 <tbody>
 
-                  <tr >
+                  <tr *ngFor="let doc of documentList; let i = index"
+                    [class.dt-row--uploaded]="getFileValid(doc.form_control_name)">
 
                     <!-- NUMBER -->
                     <td class="dt-num">
                       <span class="dt-num-inner">
-                        1
+                        {{i+1}}
                       </span>
                     </td>
 
@@ -619,13 +521,13 @@
                       <div class="dt-name-wrap">
 
                         <div class="dt-name-icon dt-icon--blue">
-                          <mat-icon>cdzsf</mat-icon>
+                          <mat-icon>{{doc.icon || 'description'}}</mat-icon>
                         </div>
 
                         <span class="dt-name-text">
-                          fsdf
+                          {{doc.document_name}}
 
-                          <span class="dt-asterisk">*</span>
+                          <span *ngIf="doc.is_required == 1" class="dt-asterisk">*</span>
 
                         </span>
 
@@ -637,9 +539,10 @@
 
                       <mat-form-field appearance="outline" class="dt-field">
 
-                        <span matPrefix>₹</span>
+                        <span matPrefix>₹&nbsp;</span>
 
-                         <input matInput  readonly />
+                        <input matInput type="number" [formControlName]="doc.form_control_name + '_amount'"
+                          placeholder="0.00" />
 
                       </mat-form-field>
 
@@ -650,9 +553,10 @@
 
                       <mat-form-field appearance="outline" class="dt-field">
 
-                        <input matInput  />
+                        <input matInput [formControlName]="doc.form_control_name + '_date'" [matDatepicker]="picker"
+                          [max]="today" readonly (focus)="picker.open()" />
 
-                        <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 
                         <mat-datepicker #picker></mat-datepicker>
 
@@ -663,15 +567,16 @@
                     <!-- FILE -->
                     <td class="dt-file">
 
-                      <input type="file"  />
+                      <input type="file" hidden #fileInput accept="application/pdf"
+                        (change)="onGenericFileChange($event, doc.form_control_name)" />
 
-                      <span class="dt-filename">
+                      <span class="dt-filename" [class.dt-filename--set]="getFileValid(doc.form_control_name)">
 
                         <mat-icon>
-                      sdfvzdfv
+                          {{ getFileValid(doc.form_control_name) ? 'check_circle' : 'attach_file' }}
                         </mat-icon>
 
-                      fdvdfv
+                        {{ getFileName(doc.form_control_name) || 'No file chosen' }}
 
                       </span>
 
@@ -680,17 +585,19 @@
                     <!-- ACTION BUTTONS -->
                     <td class="dt-actions">
 
-                      <button class="dt-btn dt-btn--upload"  type="button"
+                      <button class="dt-btn dt-btn--upload" (click)="fileInput.click()" type="button"
                         matTooltip="Upload PDF">
                         <mat-icon>upload</mat-icon>
                         <span>Upload</span>
                       </button>
 
-                      <button class="dt-btn dt-btn--view"  type="button" matTooltip="View">
+                      <button class="dt-btn dt-btn--view" (click)="viewGenericFile(doc.form_control_name)"
+                        [disabled]="!getFileValid(doc.form_control_name)" type="button" matTooltip="View">
                         <mat-icon>visibility</mat-icon>
                       </button>
 
-                      <button class="dt-btn dt-btn--remove"  type="button" matTooltip="Remove">
+                      <button class="dt-btn dt-btn--remove" *ngIf="getFileValid(doc.form_control_name)"
+                        (click)="resetGenericFile(doc.form_control_name, fileInput)" type="button" matTooltip="Remove">
                         <mat-icon>delete_outline</mat-icon>
                       </button>
 
@@ -716,18 +623,20 @@
     ───────────────────────────────────────── -->
     <div class="submit-card">
       <div class="sc-checks">
-        <div class="sc-check">
-          <mat-icon>dfvdfvg</mat-icon>
+        <div class="sc-check" [class.sc-check--ok]="treatmentDetails.length > 0">
+          <mat-icon>{{ treatmentDetails.length > 0 ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
           <span>At least one treatment record added</span>
         </div>
-        <div class="sc-check" >
-          <mat-icon>dgvfxdg</mat-icon>
+        <div class="sc-check" [class.sc-check--ok]="!ApplyMedicalReimbursementMainFormGroup.invalid">
+          <mat-icon>{{ !ApplyMedicalReimbursementMainFormGroup.invalid ? 'check_circle' : 'radio_button_unchecked'
+            }}</mat-icon>
           <span>All required fields filled</span>
         </div>
       </div>
 
       <button class="submit-btn"
-      type="button">
+        [disabled]="ApplyMedicalReimbursementMainFormGroup.invalid || treatmentDetails.length === 0"
+        (click)="saveMedicalReimbursement()" type="button">
         <span class="sb-shine"></span>
         <mat-icon>send</mat-icon>
         <span>Submit Application</span>

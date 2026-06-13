@@ -105,7 +105,9 @@ async function getQueryFromID(params, sessionDetails) {
     throw { message: `no/multiple record in mas_custom_queries for query_id ${sessionDetails.query_id}` };
   }
 
-  const definition = JSON.parse(rows[0].query_object);
+  // MariaDB JSON columns are returned already-parsed by the driver; only parse strings.
+  const rawDef = rows[0].query_object;
+  const definition = typeof rawDef === 'string' ? JSON.parse(rawDef) : rawDef;
 
   // access_type 'A' is always allowed; otherwise the definition must permit it.
   if (!(access_type === 'A' || (definition.permission && definition.permission[access_type]))) {

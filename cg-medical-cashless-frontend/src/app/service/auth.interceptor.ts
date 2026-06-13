@@ -9,7 +9,7 @@ import { Observable, throwError } from 'rxjs';
 import { LoaderService } from "./loader.service";
 import { catchError, finalize } from 'rxjs/operators';
 import Swal from 'sweetalert2';
-import { moduleMapping } from "environment";
+import { moduleMapping } from "../../environment/environment";
 import { CookieService } from "ngx-cookie-service";
 
 @Injectable()
