@@ -272,19 +272,19 @@
     0 1px 4px rgba(0, 0, 0, 0.04) !important;
   overflow: hidden !important;
   margin-bottom: 20px !important;
-  transition:
-    box-shadow 0.28s,
-    transform 0.28s !important;
+  transition: box-shadow 0.28s !important;
   animation: cardRise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both !important;
 
   &:hover {
-    box-shadow: 0 14px 50px rgba(0, 0, 0, 0.12) !important;
-    transform: translateY(-3px) !important;
+    /* Use deeper shadow instead of transform — transform creates a CSS
+       stacking context that causes dropdown/calendar overlays to render
+       behind later cards even when appendTo="body" is set. */
+    box-shadow: 0 14px 50px rgba(0, 0, 0, 0.15) !important;
   }
 
   &.mat-expanded {
-    box-shadow: 0 18px 60px rgba(41, 57, 98, 0.14) !important;
-    transform: translateY(-2px) !important;
+    box-shadow: 0 18px 60px rgba(41, 57, 98, 0.18) !important;
+    overflow: visible !important;
   }
 }
 
@@ -327,6 +327,11 @@
 
 ::ng-deep .mat-expansion-panel-body {
   padding: 0 !important;
+  overflow: visible !important;
+}
+
+::ng-deep .mat-expansion-panel-content {
+  overflow: visible !important;
 }
 
 ::ng-deep .fc-title {
@@ -633,7 +638,14 @@
   border-radius: 12px !important;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14) !important;
   overflow: hidden !important;
-  z-index: 9999 !important;
+  z-index: 100001 !important;
+
+  .ng-dropdown-panel-items,
+  .scroll-host {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
 
   .ng-option {
     // font-family: 'Sora', sans-serif !important;
@@ -662,7 +674,7 @@
   background: var(--white);
   border: 1.5px solid var(--gray-200);
   border-radius: 16px;
-  overflow: hidden;
+  overflow: visible;
   margin-bottom: 24px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }

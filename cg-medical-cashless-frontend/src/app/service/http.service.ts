@@ -37,7 +37,9 @@ export class HttpService {
   }
 
   private handleError(e: any) {
-    return of(e);
+    // Normalize every error into the same envelope the components expect
+    // so that `res.body.error` is always defined.
+    return of({ body: { error: e, data: [] } });
   }
 
   getData(url: string, type: string = 'admin'): Observable<any> {
@@ -67,11 +69,8 @@ export class HttpService {
 
   postForm(url: string, data: any, type: string = 'admin'): Observable<any> {
     return this.http.post(this.baseUrl(type) + url, data, { observe: 'response', withCredentials: true }).pipe(
-      map(res => {
-        return res;
-      }), catchError(e => {
-        throw new Error(e);
-      })
+      map(res => res),
+      catchError(this.handleError)
     );
   }
 

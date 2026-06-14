@@ -1,3 +1,5 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@ng-select/ng-select/themes/material.theme.css';
 @import './styles/_common';
 :root {
   --primary: #0f4c81;
@@ -31,6 +33,7 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+  position: relative;
 }
 
 a {
@@ -39,4 +42,47 @@ a {
 
 button {
   cursor: pointer;
+}
+
+/* ── Overlay z-index fix ────────────────────────────────────
+   mat-datepicker calendars and ng-select dropdowns must float
+   above transformed expansion-panel cards (which create their
+   own stacking contexts via transform).
+─────────────────────────────────────────────────────────── */
+.cdk-overlay-container {
+  z-index: 100000 !important;
+}
+
+.cdk-overlay-pane,
+.mat-datepicker-popup,
+.mat-datepicker-content,
+.mat-mdc-select-panel,
+.ng-dropdown-panel {
+  z-index: 100001 !important;
+}
+
+.cdk-overlay-pane.mat-datepicker-popup {
+  max-width: calc(100vw - 24px) !important;
+}
+
+.mat-datepicker-content {
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+}
+
+.mat-datepicker-content .mat-calendar {
+  max-width: calc(100vw - 32px);
+}
+
+.ng-dropdown-panel {
+  box-sizing: border-box;
+  max-width: calc(100vw - 24px);
+  overflow: hidden !important;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items,
+.ng-dropdown-panel .scroll-host {
+  max-height: 250px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
