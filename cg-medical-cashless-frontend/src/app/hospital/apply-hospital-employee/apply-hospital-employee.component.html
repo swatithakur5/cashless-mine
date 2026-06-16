@@ -268,6 +268,67 @@
 
 
             </div>
+             <div class="iz-row iz-row--divider">
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>receipt_long</mat-icon> Receipt No
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Receipt No</mat-label>
+                  <input matInput formControlName="receipt_no" />
+                </mat-form-field>
+              </div>
+
+              <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>today</mat-icon> Receipt Date
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Receipt Date</mat-label>
+                  <input
+                    matInput
+                    formControlName="receipt_date"
+                    [max]="today"
+                    [matDatepicker]="picker"
+                    readonly
+                    (focus)="picker.open()" />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <!-- <div class="fg-item fg-item--sm">
+                <label class="fg-label">
+                  <mat-icon>tag</mat-icon> Quantity
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Quantity</mat-label>
+                  <input matInput type="number" formControlName="quantity" (input)="updateClaimAmount()" />
+                </mat-form-field>
+              </div> -->
+
+              <!-- <div class="fg-item">
+                <label class="fg-label">
+                  <mat-icon>currency_rupee</mat-icon> Rate / Unit
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Rate per Unit</mat-label>
+                  <input matInput type="number" formControlName="rate_per_unit" (input)="updateClaimAmount()" />
+                </mat-form-field>
+              </div> -->
+
+              <div class="fg-item fg-item--amount">
+                <label class="fg-label">
+                  <mat-icon>payments</mat-icon> Claim Amount
+                </label>
+                <mat-form-field appearance="outline" class="fg-field">
+                  <mat-label>Claim Amount</mat-label>
+                  <input matInput type="number" formControlName="claim_amount" readonly />
+                </mat-form-field>
+              </div>
+
+            </div>
 
             <!-- Row D: Dates -->
             <div class="iz-row iz-row--divider">

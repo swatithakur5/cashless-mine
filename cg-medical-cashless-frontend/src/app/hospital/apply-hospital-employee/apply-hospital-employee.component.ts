@@ -432,7 +432,7 @@ export class ApplyHospitalEmployeeComponent implements OnInit {
 
   districtChange(event: any) {
     this.treatmentForm.patchValue({ hospital_code: null });
-    this.getMasHospitalDetails(event.district_code);
+    this.getMasHospitalDetails(event);
   }
 
   getMasHospitalDetails(district_code: any) {
